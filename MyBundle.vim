@@ -42,6 +42,7 @@ Plugin 'YankRing.vim'
 Plugin 'nodeunit.vim'
 Plugin 'FuzzyFinder'
 Plugin 'L9'
+Plugin 'bufexplorer.zip'
 Plugin 'vim-coffee-script'
  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent 
  autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
@@ -49,7 +50,7 @@ Plugin 'vim-coffee-script'
  autocmd BufWritePost *.coffee silent make! --output output
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'geekjuice/vim-mocha' 
- let g:mocha_coffee_command = ":Dispatch mocha --compilers 'coffee:coffee-script/register' {spec}" 
+ let g:mocha_coffee_command = ":Dispatch mocha --compilers 'coffee:coffee-script/register' %" 
  " vim-rspec mappings
   map <Leader>t :call RunCurrentSpecFile()<CR>
   map <Leader>s :call RunNearestSpec()<CR>
@@ -75,10 +76,23 @@ Plugin 'Valloric/YouCompleteMe'
   set completeopt-=preview
 
 Plugin 'bling/vim-airline'
-  let g:airline#extensions#tabline#enabled=1
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-
+"" Airline
+"smarter tab line
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = '▶'
+    let g:airline#extensions#tabline#left_alt_sep = '>'
+"force airline when only one window
+    set laststatus=2
+"unicode characters
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+ endif
+    let g:airline_left_sep = '▶'
+    let g:airline_right_sep = '<'
+    let g:airline_symbols.linenr = '␤'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.whitespace = 'Ξ'
 Plugin 'edkolev/promptline.vim'
   let g:promptline_powerline_symbols=0
   " Rest of config at bottom so it has access to autoload.
