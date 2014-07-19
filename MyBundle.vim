@@ -57,6 +57,7 @@ Plugin 'geekjuice/vim-mocha'
   map <Leader>l :call RunLastSpec()<CR>
   map <Leader>a :call RunAllSpecs()<CR>
 
+Plugin 'LustyJuggler'
 Plugin 'justinmk/vim-sneak'
   let g:sneak#streak = 1
 
